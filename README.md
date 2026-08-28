@@ -15,7 +15,8 @@
 
 - **Challenge:** 4, Improve the Handoff to Homelessness Services.
 - **Primary user:** The family, not the person experiencing homelessness or the frontline
-  responder the brief names by default. The family member is who makes the calls, and the moment that matters most happens before
+  responder the brief names by default. The team reframed the primary user on lab day. The
+  family member is who makes the calls, and the moment that matters most happens before
   homelessness starts. The person they love is who every handoff ultimately serves.
 
 ## Problem and repeated workflow
@@ -108,6 +109,33 @@ actually face, and does the routing respect the real front doors. Owner: Mike Ha
 (mhancock537 on GitHub) sends both requests within one week of the lab. A pilot would need
 each listed organization to confirm its own entry in the resource table, and funded humans
 to own the confirmations, since the evidence says the humans are the active ingredient.
+
+## Plan to put the tool in front of families
+
+This is a proposed plan. Nothing below has been printed or placed anywhere yet.
+
+A tool nobody finds does not help anyone. The pilot review above tests whether the routing
+is right. This plan gets the link in front of a family at the moment they need it, before
+they start guessing.
+
+**Where:** the same catchable moments the six scenarios describe. A card and a one-page
+handout at hospital ER discharge desks, at the Jefferson County Jail release area, at
+Crisis Center Birmingham and other 988 intake points, at One Roof's Coordinated Entry front
+door, and at NAMI Alabama family support meetings.
+
+**What gets placed:** a small card with a QR code to mhh205.cloud/lab, and a handout with
+the same code plus the 988 and 211 numbers printed large. Both state plainly that the tool
+is a synthetic-scenario demo, not a live directory, until a pilot says otherwise.
+
+**Who approves it:** each site's own staff. No card or handout goes on a wall, a discharge
+folder, or a jail release packet without that site agreeing first.
+
+**Owner and timing:** Mike Hancock raises the placement idea in the same NAMI Alabama and
+One Roof conversations named in the pilot review, then extends it to a hospital and the
+jail once one of the first two says yes.
+
+**What proves it worked:** a site agrees to a physical placement, or a family who saw a
+card reaches a step 2 call.
 
 ## Demo video (if needed)
 

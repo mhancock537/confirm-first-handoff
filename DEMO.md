@@ -45,9 +45,10 @@ not hand off until a human confirmed the alternative was real today.
 1. Click **FAM-05, Get one accountable owner instead of another loop**, tagged Navigate
    the systems. A fictional family whose person cycles between jail, the ER, and the
    street.
-2. Walk the same six steps fast. The calls are JBS Mental Health Authority, Alabama
+2. Walk the same seven steps fast. The calls are JBS Mental Health Authority, Alabama
    Medicaid, and Social Security disability, the confirm item is JBS's service area and
-   intake requirements, and the owner becomes an assigned case manager who takes over the
+   intake requirements, every scenario now carries the same set-them-up-to-succeed list
+   with its own timing, and the owner becomes an assigned case manager who takes over the
    whole picture.
 3. Scroll to **The four systems, one page**: crisis, treatment, housing, family support,
    and benefits, all 13 real resources with links, plus the note that nothing is a live

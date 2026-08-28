@@ -43,6 +43,10 @@ moment it enters the repo. Do not trust this tool for anything a line below rule
   asking an AI assistant, will not find this tool today. Developing full SEO for search
   and AI findability is named future work, and it matters because the family in crisis
   starts at a search box. Added 2026-08-28.
+- No signage or handout exists. The README names a plan to place a QR card and a handout
+  at ER discharge desks, the Jefferson County Jail release area, Crisis Center Birmingham,
+  One Roof, and NAMI Alabama meetings. No site has agreed, nothing has been printed, and
+  nothing has been placed anywhere. Added 2026-08-28.
 
 ## What this tool must not be trusted for
 
