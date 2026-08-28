@@ -4,6 +4,10 @@
 > event's team README template. See SUBMISSIONS.md and JUDGING.md in the
 > [event repository](https://github.com/Birmingham-AI/claude-impact-lab).
 
+**This is a learning lab demonstration. No part of this website or repository should be
+used in a crisis situation. In an emergency call 911. For a mental health crisis call or
+text 988.** Full terms in [Disclaimers](#disclaimers).
+
 ## Team
 
 - **Team name:** Confirm First
@@ -148,6 +152,34 @@ jail once one of the first two says yes.
 
 **What proves it worked:** a site agrees to a physical placement, or a family who saw a
 card reaches a step 2 call.
+
+## Disclaimers
+
+1. **Learning lab project.** This project was built in a single day at the Claude Impact
+   Lab, Birmingham, Alabama, on August 28, 2026, for educational and demonstration
+   purposes only. It is a prototype, not a service, and no organization operates it.
+2. **Not for crisis use.** No part of this website or repository should be used in a
+   crisis situation. If anyone is in danger, call 911. For a mental health or substance
+   use crisis, call or text 988. For referrals to food, housing, and health care, dial
+   2-1-1.
+3. **Not professional advice.** Nothing here is medical, clinical, legal, or financial
+   advice, and nothing here substitutes for the judgment of a trained professional. The
+   tool deliberately routes every consequential decision to a person.
+4. **No affiliation or endorsement.** The organizations named in this project are real,
+   but none of them are affiliated with this project, and none of them have reviewed,
+   approved, or endorsed it. Their inclusion means only that their public site was
+   reachable on August 28, 2026.
+5. **Information is point in time.** Every fact was verified only as described, on
+   August 28, 2026, from public sources. Phone numbers, requirements, programs, and
+   organizations change. Nothing here updates itself.
+6. **Nothing is live.** This project makes no claim about hours, bed availability,
+   capacity, eligibility, wait lists, or acceptance, anywhere, at any time.
+7. **All scenarios are fictional.** Every family and situation shown is synthetic,
+   labeled as such, and describes no real person or case.
+8. **No data collection.** The site has no forms, no accounts, no analytics, and no
+   storage of visitor information. It records nothing and sends nothing.
+9. **No warranty.** This project is provided as is, without warranty of any kind,
+   express or implied. Use of any part of it is at the user's own risk.
 
 ## Demo video (if needed)
 
