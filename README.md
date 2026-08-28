@@ -17,11 +17,11 @@ text 988.** Full terms in [Disclaimers](#disclaimers).
 ## Challenge and primary user
 
 - **Challenge:** 4, Improve the Handoff to Homelessness Services.
-- **Primary user:** The family, friend, colleague, pastor, etc, not the person
-  experiencing homelessness or the frontline responder that the brief names by default.
-  The team reframed the primary user on lab day. The family member is the one who makes
-  the calls. The moment that matters most happens before homelessness starts. The person
-  they love is the person every handoff ultimately serves.
+- **Primary user:** The family of a person with co-occurring mental health and substance
+  use needs, not the person experiencing homelessness or the frontline responder that the
+  brief names by default. The team reframed the primary user on lab day. The family member
+  is the one who makes the calls. The moment that matters most happens before homelessness
+  starts. The person they love is the person every handoff ultimately serves.
 
 ## Problem and repeated workflow
 
@@ -38,8 +38,10 @@ keep them out of.
 ## What the project does
 
 A confirm-first family navigator. The family picks the moment they are in, from six
-synthetic scenarios, and the card returns the calls to make in order to successfully
-transition the at-risk individual. Scenarios split into two paths:
+synthetic scenarios, and gets a seven-step card: the calls to make in order, the one thing
+to confirm by phone before anyone travels, the safe next step, the benefit applications to
+start now, the owner, the point where a trained person takes over, and when to check back.
+Scenarios split into two paths:
 prevent entry into homelessness when a catchable moment exists, and navigate the systems in
 the right order when entry cannot be avoided. The handoff summary stays locked until the
 family marks the phone confirmation done. A human confirms. Then the card hands off. Below
