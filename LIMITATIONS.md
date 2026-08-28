@@ -18,9 +18,11 @@ moment it enters the repo. Do not trust this tool for anything a line below rule
   live on 2026-08-28 by loading it that day. That is the entire claim. Hours, beds,
   openings, intake rules, and eligibility were not verified and are never live in this
   tool. Every screen repeats the not-live label. Added 2026-08-28 with the pivot.
-- The only phone numbers shown are 988 (call or text) and 211 (dial 2-1-1, text ZIP to
-  898-211), both taken from the services' own official pages on 2026-08-28. Every other
-  resource says "contact page on their site" because we did not verify any other number.
+- The card page shows only two phone numbers, 988 (call or text) and 211 (dial 2-1-1,
+  text ZIP to 898-211), both taken from the services' own official pages on 2026-08-28.
+  Every other resource on the card says "contact page on their site." The printable
+  checklist adds two more, Alabama Medicaid's Recipient Call Center and Legal Services
+  Alabama's intake line, each cited to the organization's own page in its entry.
 - Two candidate resources were dropped because their sites could not be verified from our
   tools on 2026-08-28: Fellowship House (site blocked automated access) and Aletheia House
   (site unreachable). Their absence is a verification gap, not a judgment.
