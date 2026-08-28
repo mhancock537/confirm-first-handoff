@@ -29,12 +29,15 @@ def entry(r, a):
         f'<li>{esc(part.strip())}</li>' for part in a["have_ready"].split("|")
     )
     src = a["source_url"]
+    dx = ""
+    if a.get("diagnosis_note", "").strip():
+        dx = f'\n  <p class="dx"><strong>Medical diagnosis:</strong> {esc(a["diagnosis_note"])}</p>'
     return f"""<section class="entry">
   <h3>{esc(r["name"])}</h3>
   <p class="what">{esc(r["what_it_is"])}.</p>
   <p><strong>How to apply or reach them:</strong> {esc(a["how_to_apply"])}</p>
   <p class="ready-label"><strong>Have ready:</strong></p>
-  <ul class="ready">{ready}</ul>
+  <ul class="ready">{ready}</ul>{dx}
   <p class="src">Source: <a href="{esc(src)}">{esc(src.replace("https://", ""))}</a> &middot; verified {esc(a["verified"])}</p>
 </section>"""
 
@@ -82,6 +85,8 @@ def build():
   .ready-label {{ margin-bottom: 0; }}
   .src {{ font-size: 0.82rem; color: var(--muted); }}
   .src a {{ color: var(--muted); }}
+  .dx {{ border-left: 3px solid var(--amber); padding: 0.3rem 0.6rem; margin: 0.4rem 0;
+         font-size: 0.92rem; background: #faf5ec; break-inside: avoid; }}
   .hotlines {{ margin-top: 1.5rem; border: 2px solid var(--ink); padding: 0.7rem 0.8rem;
                font-size: 1.05rem; break-inside: avoid; page-break-inside: avoid; }}
   .footer {{ margin-top: 1rem; font-size: 0.82rem; color: var(--muted); }}
@@ -99,6 +104,8 @@ Built at the Claude Impact Lab, Birmingham, August 28, 2026.</p>
   program, so confirm with each agency before you gather documents. Where a site publishes
   no checklist, this page says so instead of guessing. This is a printable takeaway from a
   demo tool, not legal, medical, or benefits advice, and nothing in it is a live feed.
+  No door in the call-first list requires you to arrive with a medical diagnosis. Where a
+  program's eligibility runs on one, its entry says so and names who makes that decision.
 </div>
 
 <h2>Applications to start</h2>
