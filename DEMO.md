@@ -26,9 +26,10 @@ verified live on August 28, 2026, and labeled not live.
      makes this call.
    - **Step 4** gives the safe next step, and names One Roof Coordinated Entry as the
      door only if every treatment door is closed today.
-   - **Step 5** sets them up to succeed: start HUD rental assistance, SNAP food
-     assistance through Alabama DHR, Medicaid, and Social Security disability before
-     discharge, because applications take time and none of them decide anything today.
+   - **Step 5** sets them up to succeed, ordered fastest to slowest: SNAP food assistance
+     through Alabama DHR, Social Security disability, Medicaid (which most single adults
+     in Alabama reach through the disability route), and HUD rental assistance with its
+     waiting-list caveat. Applications take time and none of them decide anything today.
    - **Step 6** names the owner, the hospital discharge planner, and the takeover point:
      the moment a treatment intake accepts, intake staff own the plan.
    - **Step 7**: follow up before discharge happens.

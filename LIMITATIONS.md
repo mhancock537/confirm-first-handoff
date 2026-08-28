@@ -65,5 +65,17 @@ moment it enters the repo. Do not trust this tool for anything a line below rule
 - The claim that JBS Mental Health Authority runs a Jefferson County Probate Court program
   and serves Jefferson, Blount, and St. Clair counties comes from its own homepage on
   2026-08-28 and was not verified with the agency.
-- Nothing else open. The team ID was unverified at first commit and got confirmed as 4B at
-  kickoff on August 28, 2026.
+- How fast JBS intake moves and how case management gets assigned. Its site lists case
+  management as a service and says nothing about timing, so FAM-05 tells families to ask
+  rather than promising an assignment.
+- Mobile crisis coverage by ZIP code and hour. FAM-02's confirm step exists because no
+  source states it.
+- Whether any Birmingham housing agency's voucher waiting list is open. HABD's site
+  states no status, so the HUD entry tells families to ask which lists are open.
+- The Medicaid claim is sourced but narrow: the statement that most single adults qualify
+  only through disability or as a very-low-income parent comes from the qualifying
+  categories listed on the Alabama Medicaid site on 2026-08-28, which include no category
+  for a non-disabled adult without dependent children. Individual cases vary and the card
+  says to check the categories before applying.
+- The team ID was unverified at first commit and got confirmed as 4B at kickoff on
+  August 28, 2026.
