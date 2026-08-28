@@ -6,11 +6,15 @@ these rules first.
 
 ## What this is
 
-A confirm-first handoff card for one bounded moment in homelessness services. A frontline
-responder selects a fictional situation and gets a dignified handoff summary, the safe next
-step, the one thing to confirm by phone before anyone travels, the owner, and the follow-up
-window. Capacity is labeled not-live everywhere it appears. One Roof's Coordinated Entry is
-the workflow boundary. The tool feeds people toward it, never around it.
+A confirm-first family navigator for co-occurring mental health and substance use needs.
+The family of the person picks the bounded moment they are in and gets the calls to make
+first, the one thing to confirm by phone before anyone travels, the safe next step, the
+owner, the point where a trained person takes over, and the follow-up window. Two paths:
+prevent entry into homelessness at a catchable moment, or navigate the four systems in
+order when entry cannot be avoided. Scenarios are synthetic. Resources are real, verified
+live on 2026-08-28, and never live-capacity. One Roof's Coordinated Entry is the workflow
+boundary. The tool feeds people toward it, never around it. Version 1 was a responder-
+facing card over the event dataset, replaced by the family pivot at midday on lab day.
 
 ## Working rules
 
@@ -33,7 +37,8 @@ the workflow boundary. The tool feeds people toward it, never around it.
 
 ## Layout
 
-- `data/` holds the synthetic scenario dataset with its `is_synthetic` column intact.
+- `data/` holds the synthetic scenarios (`is_synthetic` intact), the verified real
+  resource list, and the event's original dataset as provenance.
 - `index.html` is the app. Single file, no dependencies.
 - `DEMO.md` holds the exact demo steps.
 - `README.md` follows the event's team README template.
