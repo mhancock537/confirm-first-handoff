@@ -14,8 +14,10 @@
 ## Challenge and primary user
 
 - **Challenge:** 4, Improve the Handoff to Homelessness Services.
-- **Primary user:** The family of a person living with both a mental health condition and
-  substance use. The person the family loves is who every handoff serves.
+- **Primary user:** The family, not the person experiencing homelessness or the frontline
+  responder the brief names by default. The team reframed the primary user on lab day. The
+  family member is who makes the calls, and the moment that matters most happens before
+  homelessness starts. The person they love is who every handoff ultimately serves.
 
 ## Problem and repeated workflow
 
