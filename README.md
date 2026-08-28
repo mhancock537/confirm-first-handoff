@@ -1,4 +1,4 @@
-# Help the Helpless (Team 4B)
+# Help the Homeless (Team 4B)
 
 > Built at the Claude Impact Lab, Birmingham, August 28, 2026. This README follows the
 > event's team README template. See SUBMISSIONS.md and JUDGING.md in the
@@ -10,7 +10,7 @@ text 988.** Full terms in [Disclaimers](#disclaimers).
 
 ## Team
 
-- **Team name:** Help the Helpless
+- **Team name:** Help the Homeless
 - **Team ID:** 4B, confirmed at kickoff on August 28, 2026.
 - **Team members (optional):** Mike Hancock, Alex Romei, Darby Westfall, Bobbie Smith.
 
