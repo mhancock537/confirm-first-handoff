@@ -1,4 +1,4 @@
-# Confirm First (Team 4X)
+# Confirm First (Team 4B)
 
 > Built at the Claude Impact Lab, Birmingham, August 28, 2026. This README follows the
 > event's team README template. See SUBMISSIONS.md and JUDGING.md in the
@@ -7,9 +7,7 @@
 ## Team
 
 - **Team name:** Confirm First
-- **Team ID:** Unverified. One of 4A, 4B, or 4C. The event's assignment table lists team
-  IDs without member names, so the ID gets confirmed with organizers at kickoff and
-  corrected here before submission.
+- **Team ID:** 4B, confirmed at kickoff on August 28, 2026.
 - **Team members (optional):** Three members. Names get added here only if all three opt in
   at submission.
 

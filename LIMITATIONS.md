@@ -39,5 +39,5 @@ moment it enters the repo. Do not trust this tool for anything a line below rule
 
 ## Unverified
 
-- Team ID is unverified. The event lists teams 4A, 4B, and 4C for this challenge without
-  member names. The README marks the ID as to-be-confirmed at kickoff.
+- Nothing open. The team ID was unverified at first commit and got confirmed as 4B at
+  kickoff on August 28, 2026.
