@@ -58,7 +58,7 @@ def build():
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Application checklist &middot; Confirm First</title>
+<title>Application checklist &middot; Help the Helpless</title>
 <style>
   :root {{ --ink: #1c1a17; --muted: #5c564e; --line: #d8d2c8; --amber: #9a6a1e; }}
   * {{ box-sizing: border-box; }}
@@ -91,7 +91,7 @@ def build():
 </head>
 <body>
 <h1>Application checklist</h1>
-<p class="lede">What to have ready for every resource in the Confirm First guide.
+<p class="lede">What to have ready for every resource in the Help the Helpless guide.
 Built at the Claude Impact Lab, Birmingham, August 28, 2026.</p>
 <div class="notice">
   <strong>Read this first.</strong> Every item below comes from each organization's own
@@ -114,7 +114,7 @@ Built at the Claude Impact Lab, Birmingham, August 28, 2026.</p>
   For referrals to food, housing, and health care: dial <strong>2-1-1</strong>
   or text your ZIP to <strong>898-211</strong>. If anyone is in danger, call <strong>911</strong>.
 </div>
-<p class="footer">Confirm First &middot; Team 4B &middot; github.com/mhancock537/confirm-first-handoff
+<p class="footer">Help the Helpless &middot; Team 4B &middot; github.com/mhancock537/confirm-first-handoff
 &middot; This page collects nothing and sends nothing. No name or personal detail appears on it.</p>
 </body>
 </html>
