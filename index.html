@@ -292,6 +292,12 @@ const RESOURCES = [
   { resource_id: "RES-SSA", name: "Social Security disability", system: "benefits",
     what_it_is: "SSI and SSDI income for people whose conditions keep them from working",
     how_to_reach: "Apply through the site", url: "https://www.ssa.gov/disability", verified_live: "2026-08-28" },
+  { resource_id: "RES-SNAP", name: "Alabama DHR Food Assistance", system: "benefits",
+    what_it_is: "Food assistance through SNAP once called Food Stamps run by the Alabama Department of Human Resources",
+    how_to_reach: "Apply through the site", url: "https://dhr.alabama.gov/food-assistance/", verified_live: "2026-08-28" },
+  { resource_id: "RES-HUD", name: "HUD rental assistance", system: "housing",
+    what_it_is: "Federal rental help including public housing and Housing Choice Vouchers through local housing agencies",
+    how_to_reach: "Find your local housing agency through the site", url: "https://www.hud.gov/topics/rental_assistance", verified_live: "2026-08-28" },
 ];
 
 const SCENARIOS = [
@@ -302,6 +308,8 @@ const SCENARIOS = [
     call_first_ids: "RES-988;RES-FT;RES-CCB",
     information_to_confirm: "Whether discharge can wait until a written plan exists and whether a treatment or respite bed can take them today",
     safe_next_step: "Ask the hospital for its discharge plan in writing and call 988 about same-day co-occurring options before anyone leaves the building",
+    setup_label: "Start these before discharge so they leave set up to succeed",
+    setup_ids: "RES-HUD;RES-SNAP;RES-MCAID;RES-SSA",
     if_entry_needed: "One Roof Coordinated Entry only if every treatment door is closed today",
     handoff_owner: "hospital discharge planner or social worker",
     takeover_point: "The moment a treatment intake accepts them the intake staff own the plan",
@@ -397,6 +405,13 @@ function summaryText(s, isConfirmed) {
     "Confirm by phone before anyone travels: " + s.information_to_confirm,
     "  Status: " + (isConfirmed ? "CONFIRMED by the family over the phone" : "NOT YET CONFIRMED"),
     "Safe next step: " + s.safe_next_step,
+  ].concat((s.setup_ids || "") ? [
+    s.setup_label + ":",
+    (s.setup_ids || "").split(";").filter(Boolean).map(id => {
+      const r = resById(id);
+      return "  - " + r.name + " (" + r.how_to_reach + ")";
+    }).join("\n"),
+  ] : []).concat([
     "If the system cannot be avoided: " + s.if_entry_needed + "  [capacity NOT LIVE]",
     "Who owns it now: " + s.handoff_owner,
     "Where a trained person takes over: " + s.takeover_point,
@@ -404,7 +419,7 @@ function summaryText(s, isConfirmed) {
     "",
     "Contains no name, no diagnosis, no personal data. Resources verified live 2026-08-28,",
     "hours and openings not live. Feeds One Roof Coordinated Entry, never around it.",
-  ].join("\n");
+  ]).join("\n");
 }
 
 function renderList() {
@@ -425,11 +440,25 @@ function renderCard() {
   const s = SCENARIOS.find(x => x.scenario_id === activeId);
   if (!s) return;
   const isConfirmed = !!confirmed[s.scenario_id];
-  const calls = s.call_first_ids.split(";").map(id => {
+  const resItem = id => {
     const r = resById(id);
     return `<li><span class="rname">${esc(r.name)}</span>
       <span class="rreach">${esc(r.how_to_reach)} &middot; <a href="${esc(r.url)}" rel="noopener">${esc(r.url).replace("https://","")}</a> &middot; site verified ${esc(r.verified_live)}</span></li>`;
-  }).join("");
+  };
+  const calls = s.call_first_ids.split(";").map(resItem).join("");
+  const setupIds = (s.setup_ids || "").split(";").filter(Boolean);
+  const setupStep = setupIds.length ? `
+    <div class="step">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-label">Set them up to succeed</div>
+        <div class="step-body">${esc(s.setup_label)}.</div>
+        <ul class="call-list">${setupIds.map(resItem).join("")}</ul>
+        <div class="step-note">Applications take time, so starting them now is part of the handoff. None of these decide anything today.</div>
+      </div>
+    </div>` : "";
+  const ownerNum = setupIds.length ? 6 : 5;
+  const checkNum = setupIds.length ? 7 : 6;
   cardRoot.innerHTML = `
     <div class="card-head">
       <span class="sid">${esc(s.scenario_id)}</span>
@@ -478,8 +507,10 @@ function renderCard() {
       </div>
     </div>
 
+    ${setupStep}
+
     <div class="step step-owner">
-      <div class="step-num">5</div>
+      <div class="step-num">${ownerNum}</div>
       <div>
         <div class="step-label">Who owns it now</div>
         <div class="step-body">${esc(s.handoff_owner)}</div>
@@ -489,7 +520,7 @@ function renderCard() {
     </div>
 
     <div class="step">
-      <div class="step-num">6</div>
+      <div class="step-num">${checkNum}</div>
       <div>
         <div class="step-label">Check back</div>
         <div class="step-body">Follow up <strong>${esc(s.follow_up_window)}</strong>. The handoff is not done until the follow-up happens.</div>
