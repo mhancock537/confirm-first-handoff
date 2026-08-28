@@ -64,7 +64,9 @@ confirmation done.
 ## Working artifact
 
 [`index.html`](index.html) in this repository. Open it in a browser. Exact demo steps are
-in [`DEMO.md`](DEMO.md).
+in [`DEMO.md`](DEMO.md). Also live for anyone with the link, no login, at
+[mhh205.cloud/lab](https://mhh205.cloud/lab/), verified byte-identical to the repo copy on
+August 28, 2026.
 
 ## What works today
 
