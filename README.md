@@ -15,8 +15,7 @@
 
 - **Challenge:** 4, Improve the Handoff to Homelessness Services.
 - **Primary user:** The family, not the person experiencing homelessness or the frontline
-  responder the brief names by default. The team reframed the primary user on lab day. The
-  family member is who makes the calls, and the moment that matters most happens before
+  responder the brief names by default. The family member is who makes the calls, and the moment that matters most happens before
   homelessness starts. The person they love is who every handoff ultimately serves.
 
 ## Problem and repeated workflow
