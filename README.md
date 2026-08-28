@@ -35,8 +35,9 @@ keep them out of.
 
 A confirm-first family navigator. The family picks the moment they are in, from six
 synthetic scenarios, and the card returns the calls to make first in order, the one thing
-to confirm by phone before anyone travels, the safe next step, who owns it now, the point
-where a trained person takes over, and when to check back. Scenarios split into two paths:
+to confirm by phone before anyone travels, the safe next step, the benefit and housing
+applications to start now so the person is set up to succeed after the crisis, who owns it
+now, the point where a trained person takes over, and when to check back. Scenarios split into two paths:
 prevent entry into homelessness when a catchable moment exists, and navigate the systems in
 the right order when entry cannot be avoided. The handoff summary stays locked until the
 family marks the phone confirmation done. A human confirms. Then the card hands off. Below
@@ -85,7 +86,8 @@ in [`DEMO.md`](DEMO.md). Also live for anyone with the link, no login, at
 
 ## What works today
 
-- All 6 synthetic family scenarios render the full six-step card with both path types.
+- All 6 synthetic family scenarios render the full seven-step card with both path types,
+  including the set-up-to-succeed step with timing matched to each scenario's moment.
 - The call-first list resolves to real resources with verified sites and dates shown.
 - The confirm gate works: NOT YET CONFIRMED and a locked copy button until the checkbox is
   ticked, then CONFIRMED and unlocked.
