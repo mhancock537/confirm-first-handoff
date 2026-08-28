@@ -46,7 +46,7 @@ the card, one page maps all four systems with real, verified front doors.
 - `data/family-scenarios.csv`: 6 family scenarios, **all synthetic**, written by the team
   on August 28, 2026. Every row carries `is_synthetic=true` and every screen repeats the
   label. No real names, no PII, no client records, and the page has no way to enter any.
-- `data/resources.csv`: 11 **real** organizations across crisis, treatment, housing,
+- `data/resources.csv`: 13 **real** organizations across crisis, treatment, housing,
   family support, and benefits. Each site was verified live on August 28, 2026, and the
   verification date shows in the page. Hours, beds, and openings were not verified and are
   labeled not live everywhere.
@@ -88,7 +88,7 @@ in [`DEMO.md`](DEMO.md). Also live for anyone with the link, no login, at
 - The call-first list resolves to real resources with verified sites and dates shown.
 - The confirm gate works: NOT YET CONFIRMED and a locked copy button until the checkbox is
   ticked, then CONFIRMED and unlocked.
-- The four-systems reference grid renders all 11 verified resources.
+- The four-systems reference grid renders all 13 verified resources.
 - The drift guard passes and was mutation-tested red and green on lab day.
 - The demo path was walked in a real browser before every commit that touched it.
 

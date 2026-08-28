@@ -14,7 +14,7 @@ moment it enters the repo. Do not trust this tool for anything a line below rule
 
 ## Real but not live
 
-- The 11 resources in `data/resources.csv` are real organizations. Each site was verified
+- The 13 resources in `data/resources.csv` are real organizations. Each site was verified
   live on 2026-08-28 by loading it that day. That is the entire claim. Hours, beds,
   openings, intake rules, and eligibility were not verified and are never live in this
   tool. Every screen repeats the not-live label. Added 2026-08-28 with the pivot.
@@ -35,6 +35,14 @@ moment it enters the repo. Do not trust this tool for anything a line below rule
   the length of the page visit. It records nothing and sends nothing. Added 2026-08-28.
 - The copy button copies text to the clipboard and nothing else. Nothing is sent, filed,
   or referred anywhere. Added 2026-08-28.
+
+## Not yet built
+
+- No SEO and no AI findability. The page ships with no meta description, no Open Graph or
+  structured data markup, no sitemap, and no llms.txt. A family searching the open web, or
+  asking an AI assistant, will not find this tool today. Developing full SEO for search
+  and AI findability is named future work, and it matters because the family in crisis
+  starts at a search box. Added 2026-08-28.
 
 ## What this tool must not be trusted for
 

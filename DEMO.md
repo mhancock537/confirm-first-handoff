@@ -26,9 +26,12 @@ verified live on August 28, 2026, and labeled not live.
      makes this call.
    - **Step 4** gives the safe next step, and names One Roof Coordinated Entry as the
      door only if every treatment door is closed today.
-   - **Step 5** names the owner, the hospital discharge planner, and the takeover point:
+   - **Step 5** sets them up to succeed: start HUD rental assistance, SNAP food
+     assistance through Alabama DHR, Medicaid, and Social Security disability before
+     discharge, because applications take time and none of them decide anything today.
+   - **Step 6** names the owner, the hospital discharge planner, and the takeover point:
      the moment a treatment intake accepts, intake staff own the plan.
-   - **Step 6**: follow up before discharge happens.
+   - **Step 7**: follow up before discharge happens.
 4. Show the summary locked at NOT YET CONFIRMED. Tick the step 3 checkbox and say out
    loud that in real use this means the family reached a person on the phone. The summary
    flips to CONFIRMED and the copy button unlocks. Copy it. No name, no diagnosis, the
@@ -47,7 +50,7 @@ not hand off until a human confirmed the alternative was real today.
    intake requirements, and the owner becomes an assigned case manager who takes over the
    whole picture.
 3. Scroll to **The four systems, one page**: crisis, treatment, housing, family support,
-   and benefits, all 11 real resources with links, plus the note that nothing is a live
+   and benefits, all 13 real resources with links, plus the note that nothing is a live
    feed.
 4. End on the footer: One Roof is the front door when homelessness cannot be prevented,
    the NCCARE360 evidence that navigation collapses without funded humans, and the privacy
