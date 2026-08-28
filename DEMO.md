@@ -30,6 +30,10 @@ verified live on August 28, 2026, and labeled not live.
      through Alabama DHR, Social Security disability, Medicaid (which most single adults
      in Alabama reach through the disability route), and HUD rental assistance with its
      waiting-list caveat. Applications take time and none of them decide anything today.
+   - Below step 5, click **Open the printable application checklist (PDF)**. It is the
+     takeaway a family leaves with: every resource in the guide, how to apply, and what to
+     have ready, each entry sourced to the organization's own site and dated. Where a site
+     publishes no checklist, the entry says to ask instead of guessing.
    - **Step 6** names the owner, the hospital discharge planner, and the takeover point:
      the moment a treatment intake accepts, intake staff own the plan.
    - **Step 7**: follow up before discharge happens.

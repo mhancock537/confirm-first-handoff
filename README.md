@@ -8,8 +8,7 @@
 
 - **Team name:** Confirm First
 - **Team ID:** 4B, confirmed at kickoff on August 28, 2026.
-- **Team members (optional):** Three members. Names get added here only if all three opt in
-  at submission.
+- **Team members (optional):** Mike Hancock, Alex Romi, Darby Westfall, Bobbie.
 
 ## Challenge and primary user
 
@@ -41,7 +40,10 @@ now, the point where a trained person takes over, and when to check back. Scenar
 prevent entry into homelessness when a catchable moment exists, and navigate the systems in
 the right order when entry cannot be avoided. The handoff summary stays locked until the
 family marks the phone confirmation done. A human confirms. Then the card hands off. Below
-the card, one page maps all four systems with real, verified front doors.
+the card, one page maps all four systems with real, verified front doors. Every card also
+carries a button that opens a printable application checklist PDF: every resource in the
+guide, how to apply, and what to have ready, each entry sourced to the organization's own
+site and dated, so the family leaves with paper in hand.
 
 ## Data and evidence sources
 
@@ -52,6 +54,11 @@ the card, one page maps all four systems with real, verified front doors.
   family support, and benefits. Each site was verified live on August 28, 2026, and the
   verification date shows in the page. Hours, beds, and openings were not verified and are
   labeled not live everywhere.
+- `data/apply-checklist.csv`: what each of the 13 resources needs from an applicant, taken
+  only from each organization's own public site on August 28, 2026, source URL cited per
+  row. Where a site publishes no checklist, the row says to ask. Feeds the printable
+  takeaway (`takeaway.html`, `takeaway.pdf`) through `gen_takeaway.py`, guarded by the
+  same drift test as the page.
 - `data/homelessness-handoff-scenarios.csv`: the event's synthetic dataset, kept as
   provenance. It powered version 1, a responder-facing card, before the team pivoted to
   the family on lab day.
@@ -92,7 +99,10 @@ in [`DEMO.md`](DEMO.md). Also live for anyone with the link, no login, at
 - The confirm gate works: NOT YET CONFIRMED and a locked copy button until the checkbox is
   ticked, then CONFIRMED and unlocked.
 - The four-systems reference grid renders all 13 verified resources.
-- The drift guard passes and was mutation-tested red and green on lab day.
+- Every card links the printable application checklist PDF, generated from the resource
+  data, five pages, sourced and dated per entry.
+- The drift guard passes and was mutation-tested red and green on lab day, including the
+  checklist data.
 - The demo path was walked in a real browser before every commit that touched it.
 
 ## Known limitations and simulated elements

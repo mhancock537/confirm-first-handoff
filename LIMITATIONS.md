@@ -24,6 +24,12 @@ moment it enters the repo. Do not trust this tool for anything a line below rule
 - Two candidate resources were dropped because their sites could not be verified from our
   tools on 2026-08-28: Fellowship House (site blocked automated access) and Aletheia House
   (site unreachable). Their absence is a verification gap, not a judgment.
+- The application checklist (`data/apply-checklist.csv`, the takeaway button, and
+  `takeaway.pdf`) lists only what each organization's own public site said on 2026-08-28,
+  with the source page cited per entry. No agency confirmed any entry. Requirements change
+  and vary by program. Four organizations publish no checklist at all on the pages we
+  verified (Social Security, Legal Services Alabama, One Roof, JBS), so their entries say
+  to ask instead of guessing. Added 2026-08-28.
 
 ## Hardcoded and mocked
 
@@ -35,6 +41,11 @@ moment it enters the repo. Do not trust this tool for anything a line below rule
   the length of the page visit. It records nothing and sends nothing. Added 2026-08-28.
 - The copy button copies text to the clipboard and nothing else. Nothing is sent, filed,
   or referred anywhere. Added 2026-08-28.
+- `takeaway.html` is generated from the two CSVs by `gen_takeaway.py`, and `takeaway.pdf`
+  is a static render of that page. `tests/check-data.py` fails when the generated page
+  goes stale, but it cannot read inside the PDF, so it checks only that the PDF exists and
+  has plausible size. Rerendering the PDF after a data change is a manual step the
+  generator's docstring names. Added 2026-08-28.
 
 ## Not yet built
 

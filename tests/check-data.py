@@ -31,6 +31,23 @@ for label in ("Synthetic", "not live", "NOT LIVE", "no diagnosis", "verified liv
     if label not in html:
         missing.append(f'required label missing from index.html: "{label}"')
 
+# The takeaway page is generated from the CSVs. Rebuild it and compare bytes, so a CSV
+# edit without a regenerate, or a hand edit to takeaway.html, fails here.
+sys.path.insert(0, str(root))
+import gen_takeaway
+try:
+    expected = gen_takeaway.build()
+    if expected != (root / "takeaway.html").read_text():
+        missing.append("takeaway.html is stale: rerun python3 gen_takeaway.py and re-render takeaway.pdf")
+except SystemExit as e:
+    missing.append(f"apply-checklist.csv inconsistent: {e}")
+
+if "takeaway.pdf" not in html:
+    missing.append("index.html no longer links takeaway.pdf")
+pdf = root / "takeaway.pdf"
+if not pdf.exists() or pdf.stat().st_size < 20000:
+    missing.append("takeaway.pdf missing or implausibly small: re-render it from takeaway.html")
+
 if missing:
     print("DRIFT FOUND:")
     print("\n".join(missing))

@@ -180,6 +180,16 @@
     padding: 0.6rem 1.2rem; transition: opacity 0.15s;
   }
   button.copy-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+  .takeaway-row {
+    display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;
+    padding: 0.9rem 1.6rem; border-top: 1px solid var(--line);
+  }
+  a.takeaway-btn {
+    display: inline-block; font-family: var(--sans); font-weight: 700; font-size: 0.85rem;
+    color: var(--ink); background: none; border: 1.5px solid var(--ink); border-radius: 8px;
+    padding: 0.45rem 0.9rem; text-decoration: none; transition: background 0.15s, color 0.15s;
+  }
+  a.takeaway-btn:hover { background: var(--ink); color: var(--paper); }
   .gate-note { font-family: var(--sans); font-size: 0.82rem; color: var(--amber); font-weight: 600; }
   .gate-note.cleared { color: var(--sage); }
 
@@ -518,6 +528,11 @@ function renderCard() {
     </div>
 
     ${setupStep}
+
+    <div class="takeaway-row">
+      <a class="takeaway-btn" href="takeaway.pdf" target="_blank" rel="noopener">Open the printable application checklist (PDF)</a>
+      <span class="step-note">Every resource in this guide, how to apply, and what to have ready, from each organization's own site on 2026-08-28. Print it and take it with you.</span>
+    </div>
 
     <div class="step step-owner">
       <div class="step-num">${ownerNum}</div>
