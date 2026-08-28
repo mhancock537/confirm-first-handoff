@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confirm-First Handoff Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f2e9;
+    --paper-deep: #efe7d8;
+    --card: #fffdf8;
+    --ink: #26251f;
+    --ink-soft: #5c584c;
+    --line: #d9d0bd;
+    --amber: #b05a1e;
+    --amber-wash: #fbeadb;
+    --sage: #3e5d4a;
+    --sage-wash: #e4ece5;
+    --slate: #35506b;
+    --slate-wash: #e3eaf1;
+    --banner: #26251f;
+    --sans: "Schibsted Grotesk", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--serif);
+    background:
+      radial-gradient(1200px 500px at 85% -5%, rgba(176, 90, 30, 0.07), transparent 60%),
+      radial-gradient(900px 420px at -10% 30%, rgba(62, 93, 74, 0.06), transparent 55%),
+      var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+
+  /* ---------- synthetic banner, always visible ---------- */
+  .synthetic-banner {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--banner); color: var(--paper);
+    font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-align: center; padding: 0.5rem 1rem;
+  }
+  .synthetic-banner strong { color: #f0b27a; font-weight: 800; }
+
+  header.masthead {
+    max-width: 1080px; margin: 0 auto; padding: 2.5rem 1.5rem 1.25rem;
+  }
+  .kicker {
+    font-family: var(--sans); font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 0.5rem;
+  }
+  h1 {
+    font-family: var(--sans); font-weight: 800; font-size: clamp(1.7rem, 4vw, 2.6rem);
+    line-height: 1.08; letter-spacing: -0.02em; max-width: 22ch;
+  }
+  .lede {
+    margin-top: 0.9rem; max-width: 62ch; font-size: 1.05rem; color: var(--ink-soft);
+  }
+  .lede em { font-style: italic; }
+
+  main { max-width: 1080px; margin: 0 auto; padding: 0.5rem 1.5rem 4rem; }
+  .layout { display: grid; grid-template-columns: 340px 1fr; gap: 1.75rem; align-items: start; }
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+
+  /* ---------- scenario list ---------- */
+  .scenario-pane h2, .card-pane-title {
+    font-family: var(--sans); font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft);
+    margin-bottom: 0.75rem;
+  }
+  .scenario-list { list-style: none; display: grid; gap: 0.6rem; }
+  .scenario-btn {
+    width: 100%; text-align: left; cursor: pointer;
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 0.85rem 1rem; font-family: var(--serif); color: var(--ink);
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+  .scenario-btn:hover { border-color: var(--amber); transform: translateX(3px); }
+  .scenario-btn[aria-pressed="true"] {
+    border-color: var(--amber); border-left-width: 5px;
+    box-shadow: 0 2px 10px rgba(38, 37, 31, 0.08);
+  }
+  .scenario-btn .sid {
+    font-family: var(--sans); font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.1em; color: var(--amber); display: block; margin-bottom: 0.15rem;
+  }
+  .scenario-btn .sneed { font-size: 0.95rem; }
+  .fictional-tag {
+    display: inline-block; font-family: var(--sans); font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft);
+    border: 1px solid var(--line); border-radius: 99px; padding: 0.05rem 0.5rem;
+    margin-top: 0.4rem;
+  }
+
+  /* ---------- the card ---------- */
+  .handoff-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 10px 34px rgba(38, 37, 31, 0.09);
+    overflow: hidden;
+  }
+  .empty-state { padding: 3.5rem 2rem; text-align: center; color: var(--ink-soft); font-style: italic; }
+
+  .card-head {
+    padding: 1.4rem 1.6rem 1.1rem; border-bottom: 1px solid var(--line);
+    display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; flex-wrap: wrap;
+  }
+  .card-head .sid { font-family: var(--sans); font-weight: 800; letter-spacing: 0.06em; color: var(--amber); }
+  .chip {
+    font-family: var(--sans); font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border-radius: 99px; padding: 0.2rem 0.65rem; white-space: nowrap;
+  }
+  .chip-synthetic { background: var(--ink); color: var(--paper); }
+  .chip-notlive { background: var(--amber-wash); color: var(--amber); border: 1px solid var(--amber); }
+
+  .step { padding: 1.15rem 1.6rem; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.9rem; }
+  .step:last-of-type { border-bottom: none; }
+  .step-num {
+    font-family: var(--sans); font-weight: 800; font-size: 0.85rem;
+    width: 1.9rem; height: 1.9rem; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--paper-deep); color: var(--ink-soft); margin-top: 0.15rem;
+  }
+  .step-label {
+    font-family: var(--sans); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft);
+    margin-bottom: 0.25rem;
+  }
+  .step-body { font-size: 1.02rem; }
+  .step-note { font-size: 0.85rem; color: var(--ink-soft); margin-top: 0.35rem; font-style: italic; }
+
+  /* confirm gate */
+  .step-confirm { background: var(--amber-wash); }
+  .step-confirm .step-num { background: var(--amber); color: #fff; }
+  .step-confirm .step-label { color: var(--amber); }
+  .confirm-check {
+    margin-top: 0.75rem; display: flex; gap: 0.6rem; align-items: flex-start;
+    font-family: var(--sans); font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  }
+  .confirm-check input { width: 1.1rem; height: 1.1rem; accent-color: var(--amber); margin-top: 0.15rem; cursor: pointer; }
+
+  /* human owner */
+  .step-owner { background: var(--sage-wash); }
+  .step-owner .step-num { background: var(--sage); color: #fff; }
+  .step-owner .step-label { color: var(--sage); }
+  .human-marker {
+    display: inline-block; font-family: var(--sans); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--sage); color: #fff; border-radius: 99px;
+    padding: 0.2rem 0.7rem; margin-top: 0.45rem;
+  }
+
+  /* summary */
+  .summary-block { padding: 1.3rem 1.6rem 1.5rem; background: var(--paper-deep); border-top: 1px solid var(--line); }
+  .summary-block h3 {
+    font-family: var(--sans); font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.6rem;
+  }
+  pre.summary {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.8rem; line-height: 1.6; white-space: pre-wrap;
+    background: var(--card); border: 1px dashed var(--line); border-radius: 8px;
+    padding: 0.9rem 1rem; color: var(--ink);
+  }
+  .summary-actions { margin-top: 0.8rem; display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
+  button.copy-btn {
+    font-family: var(--sans); font-weight: 700; font-size: 0.9rem; cursor: pointer;
+    background: var(--ink); color: var(--paper); border: none; border-radius: 8px;
+    padding: 0.6rem 1.2rem; transition: opacity 0.15s;
+  }
+  button.copy-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+  .gate-note { font-family: var(--sans); font-size: 0.82rem; color: var(--amber); font-weight: 600; }
+  .gate-note.cleared { color: var(--sage); }
+
+  footer.boundary {
+    max-width: 1080px; margin: 0 auto; padding: 2rem 1.5rem 3rem;
+    border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.9rem;
+  }
+  footer.boundary p { max-width: 72ch; margin-bottom: 0.7rem; }
+  footer.boundary a { color: var(--slate); }
+  .boundary-strong { color: var(--ink); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="synthetic-banner">
+  <strong>Synthetic training demo.</strong> Every scenario is fictional. No real people, no real records. Capacity shown is <strong>not live</strong>.
+</div>
+
+<header class="masthead">
+  <div class="kicker">Claude Impact Lab &middot; Birmingham &middot; Challenge 4</div>
+  <h1>Confirm-First Handoff Card</h1>
+  <p class="lede">One bounded moment: a frontline responder needs the next safe step for a person, right now. This card gives the step, the one thing to <em>confirm by phone before anyone travels</em>, who owns the handoff, and when to follow up. It feeds One Roof's Coordinated Entry. It never goes around it.</p>
+</header>
+
+<main>
+  <div class="layout">
+    <section class="scenario-pane" aria-label="Scenario picker">
+      <h2>Pick a fictional situation</h2>
+      <ul class="scenario-list" id="scenario-list"></ul>
+    </section>
+
+    <section class="card-pane" aria-label="Handoff card" aria-live="polite">
+      <h2 class="card-pane-title">The handoff card</h2>
+      <div id="card-root" class="handoff-card">
+        <div class="empty-state">Select a situation on the left. Every one of them is synthetic.</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="boundary">
+  <p><span class="boundary-strong">Workflow boundary.</span> <a href="https://www.oneroofonline.org/" rel="noopener">One Roof</a> runs Coordinated Entry for the Birmingham area. This card routes people toward that system and marks where its trained staff take over. It does not screen, score, rank, or place anyone.</p>
+  <p><span class="boundary-strong">Why a person owns the handoff.</span> Referral navigation collapses without funded humans. On North Carolina's NCCARE360 platform, referral resolution ran 88 percent with funded navigators and 30 percent without them, on the same software. Evidence base: <a href="https://impact-birmingham.com" rel="noopener">impact-birmingham.com</a>.</p>
+  <p><span class="boundary-strong">Capacity is not live.</span> This tool holds no connection to any bed list or facility. That is why step 3 exists.</p>
+</footer>
+
+<script>
+// Source of record: data/homelessness-handoff-scenarios.csv (synthetic, is_synthetic=true
+// on every row). Copied here by hand so the page opens from a file with no server.
+// If the two drift, the CSV wins. Logged in LIMITATIONS.md.
+const SCENARIOS = [
+  { scenario_id: "SCEN-01",
+    person_context: "Fictional adult sleeping outdoors during a heat advisory",
+    immediate_need: "Immediate shade and water",
+    public_resource_type: "cooling center",
+    information_to_confirm: "Whether the nearest listed cooling center is open today",
+    safe_next_step: "Direct to nearest listed cooling center and confirm by phone before travel",
+    handoff_owner_type: "frontline responder",
+    follow_up_window: "within 2 hours",
+    capacity_is_not_live: true, is_synthetic: true },
+  { scenario_id: "SCEN-02",
+    person_context: "Fictional adult with a pet seeking overnight shelter",
+    immediate_need: "Overnight shelter that accepts pets",
+    public_resource_type: "pet-friendly shelter bed",
+    information_to_confirm: "Whether pet-friendly beds are currently available",
+    safe_next_step: "Contact Fictional Coordinated Entry access point to confirm pet policy and availability",
+    handoff_owner_type: "coordinated entry access point",
+    follow_up_window: "within 4 hours",
+    capacity_is_not_live: true, is_synthetic: true },
+  { scenario_id: "SCEN-03",
+    person_context: "Fictional family with children needing emergency shelter",
+    immediate_need: "Emergency family shelter placement",
+    public_resource_type: "family shelter",
+    information_to_confirm: "Whether family shelter has an intake slot today",
+    safe_next_step: "Direct to Fictional Coordinated Entry family intake line for live confirmation",
+    handoff_owner_type: "coordinated entry access point",
+    follow_up_window: "same day",
+    capacity_is_not_live: true, is_synthetic: true },
+  { scenario_id: "SCEN-04",
+    person_context: "Fictional young adult aging out of foster care",
+    immediate_need: "Transitional housing information",
+    public_resource_type: "youth transitional housing",
+    information_to_confirm: "Age and eligibility documentation needed for youth programs",
+    safe_next_step: "Direct to Fictional youth-specific transitional housing program intake",
+    handoff_owner_type: "youth services provider",
+    follow_up_window: "within 3 days",
+    capacity_is_not_live: true, is_synthetic: true },
+  { scenario_id: "SCEN-05",
+    person_context: "Fictional adult recently discharged from a hospital",
+    immediate_need: "Short-term respite care bed",
+    public_resource_type: "medical respite",
+    information_to_confirm: "Whether a discharge referral form is required",
+    safe_next_step: "Direct to Fictional medical respite program and confirm referral requirement",
+    handoff_owner_type: "healthcare case manager",
+    follow_up_window: "within 24 hours",
+    capacity_is_not_live: true, is_synthetic: true },
+  { scenario_id: "SCEN-06",
+    person_context: "Fictional adult seeking daytime services and a phone charge",
+    immediate_need: "Daytime drop-in services",
+    public_resource_type: "daytime drop-in center",
+    information_to_confirm: "Current operating hours for the listed drop-in center",
+    safe_next_step: "Direct to nearest listed daytime drop-in center and confirm hours by phone",
+    handoff_owner_type: "frontline responder",
+    follow_up_window: "same day",
+    capacity_is_not_live: true, is_synthetic: true },
+];
+
+const listEl = document.getElementById("scenario-list");
+const cardRoot = document.getElementById("card-root");
+let activeId = null;
+let confirmed = {}; // per-scenario confirm state, reset on page load
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+}
+
+function summaryText(s, isConfirmed) {
+  return [
+    "HANDOFF SUMMARY  (SYNTHETIC TRAINING SCENARIO " + s.scenario_id + ")",
+    "",
+    "Situation: " + s.person_context,
+    "Immediate need: " + s.immediate_need,
+    "Resource type: " + s.public_resource_type + "  [capacity NOT LIVE]",
+    "Phone confirmation before travel: " + s.information_to_confirm,
+    "  Status: " + (isConfirmed ? "CONFIRMED by responder over the phone" : "NOT YET CONFIRMED"),
+    "Safe next step: " + s.safe_next_step,
+    "Handoff owner: " + s.handoff_owner_type + "  (a trained person takes over here)",
+    "Follow-up window: " + s.follow_up_window,
+    "",
+    "Contains no real personal data. Feeds One Roof Coordinated Entry, never around it.",
+  ].join("\n");
+}
+
+function renderList() {
+  listEl.innerHTML = SCENARIOS.map(s => `
+    <li>
+      <button class="scenario-btn" data-id="${s.scenario_id}" aria-pressed="${s.scenario_id === activeId}">
+        <span class="sid">${esc(s.scenario_id)}</span>
+        <span class="sneed">${esc(s.immediate_need)}</span><br>
+        <span class="fictional-tag">Fictional</span>
+      </button>
+    </li>`).join("");
+}
+
+function renderCard() {
+  const s = SCENARIOS.find(x => x.scenario_id === activeId);
+  if (!s) return;
+  const isConfirmed = !!confirmed[s.scenario_id];
+  cardRoot.innerHTML = `
+    <div class="card-head">
+      <span class="sid">${esc(s.scenario_id)}</span>
+      <span>
+        <span class="chip chip-synthetic">Synthetic scenario</span>
+        <span class="chip chip-notlive">Capacity not live</span>
+      </span>
+    </div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-label">The situation, with dignity</div>
+        <div class="step-body">${esc(s.person_context)}. The immediate need is <strong>${esc(s.immediate_need).toLowerCase()}</strong>.</div>
+        <div class="step-note">The person is the user of this handoff, never the problem in it.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-label">Safe next step</div>
+        <div class="step-body">${esc(s.safe_next_step)}.</div>
+        <div class="step-note">Resource type: ${esc(s.public_resource_type)} <span class="chip chip-notlive">capacity not live</span></div>
+      </div>
+    </div>
+
+    <div class="step step-confirm">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-label">Confirm by phone before anyone travels</div>
+        <div class="step-body">${esc(s.information_to_confirm)}.</div>
+        <div class="step-note">This tool cannot check availability. Nothing here is live. A person makes this call.</div>
+        <label class="confirm-check">
+          <input type="checkbox" id="confirm-box" ${isConfirmed ? "checked" : ""}>
+          <span>I reached a person and confirmed the item above. (Demo checkbox. It records nothing and sends nothing.)</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="step step-owner">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-label">Who owns this handoff</div>
+        <div class="step-body">${esc(s.handoff_owner_type)}</div>
+        <span class="human-marker">A trained person takes over here</span>
+        <div class="step-note">Eligibility and placement decisions belong to this person, not to this card.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-label">Follow-up window</div>
+        <div class="step-body">Check back <strong>${esc(s.follow_up_window)}</strong>. The handoff is not done until the follow-up happens.</div>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <h3>Handoff summary &middot; no sensitive personal data</h3>
+      <pre class="summary" id="summary-pre">${esc(summaryText(s, isConfirmed))}</pre>
+      <div class="summary-actions">
+        <button class="copy-btn" id="copy-btn" ${isConfirmed ? "" : "disabled"}>Copy summary</button>
+        <span class="gate-note ${isConfirmed ? "cleared" : ""}" id="gate-note">
+          ${isConfirmed ? "Phone confirmation marked done. Summary unlocked." : "Locked until the phone confirmation in step 3 is marked done."}
+        </span>
+      </div>
+    </div>`;
+
+  document.getElementById("confirm-box").addEventListener("change", e => {
+    confirmed[s.scenario_id] = e.target.checked;
+    renderCard();
+  });
+  document.getElementById("copy-btn").addEventListener("click", () => {
+    const text = summaryText(s, !!confirmed[s.scenario_id]);
+    navigator.clipboard.writeText(text).then(() => {
+      document.getElementById("gate-note").textContent = "Copied to clipboard. Nothing was sent anywhere.";
+    }, () => {
+      document.getElementById("gate-note").textContent = "Clipboard blocked by the browser. Select the text and copy it by hand.";
+    });
+  });
+}
+
+listEl.addEventListener("click", e => {
+  const btn = e.target.closest(".scenario-btn");
+  if (!btn) return;
+  activeId = btn.dataset.id;
+  renderList();
+  renderCard();
+});
+
+renderList();
+</script>
+</body>
+</html>
