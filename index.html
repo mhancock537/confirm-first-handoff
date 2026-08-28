@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Confirm-First Handoff Card</title>
+<title>Confirm-First Family Navigator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap" rel="stylesheet">
@@ -38,7 +38,6 @@
     min-height: 100vh;
   }
 
-  /* ---------- synthetic banner, always visible ---------- */
   .synthetic-banner {
     position: sticky; top: 0; z-index: 50;
     background: var(--banner); color: var(--paper);
@@ -48,9 +47,7 @@
   }
   .synthetic-banner strong { color: #f0b27a; font-weight: 800; }
 
-  header.masthead {
-    max-width: 1080px; margin: 0 auto; padding: 2.5rem 1.5rem 1.25rem;
-  }
+  header.masthead { max-width: 1080px; margin: 0 auto; padding: 2.5rem 1.5rem 1.25rem; }
   .kicker {
     font-family: var(--sans); font-size: 0.8rem; font-weight: 700;
     letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber);
@@ -58,19 +55,20 @@
   }
   h1 {
     font-family: var(--sans); font-weight: 800; font-size: clamp(1.7rem, 4vw, 2.6rem);
-    line-height: 1.08; letter-spacing: -0.02em; max-width: 22ch;
+    line-height: 1.08; letter-spacing: -0.02em; max-width: 24ch;
   }
-  .lede {
-    margin-top: 0.9rem; max-width: 62ch; font-size: 1.05rem; color: var(--ink-soft);
-  }
+  .lede { margin-top: 0.9rem; max-width: 64ch; font-size: 1.05rem; color: var(--ink-soft); }
   .lede em { font-style: italic; }
+  .danger-line {
+    margin-top: 0.8rem; max-width: 64ch; font-family: var(--sans); font-size: 0.9rem;
+    font-weight: 600; color: var(--amber);
+  }
 
-  main { max-width: 1080px; margin: 0 auto; padding: 0.5rem 1.5rem 4rem; }
-  .layout { display: grid; grid-template-columns: 340px 1fr; gap: 1.75rem; align-items: start; }
-  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+  main { max-width: 1080px; margin: 0 auto; padding: 0.5rem 1.5rem 3rem; }
+  .layout { display: grid; grid-template-columns: 350px 1fr; gap: 1.75rem; align-items: start; }
+  @media (max-width: 880px) { .layout { grid-template-columns: 1fr; } }
 
-  /* ---------- scenario list ---------- */
-  .scenario-pane h2, .card-pane-title {
+  .scenario-pane h2, .card-pane-title, .systems-title {
     font-family: var(--sans); font-size: 0.8rem; font-weight: 700;
     letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft);
     margin-bottom: 0.75rem;
@@ -92,14 +90,15 @@
     letter-spacing: 0.1em; color: var(--amber); display: block; margin-bottom: 0.15rem;
   }
   .scenario-btn .sneed { font-size: 0.95rem; }
-  .fictional-tag {
+  .tagrow { margin-top: 0.4rem; display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .fictional-tag, .path-tag {
     display: inline-block; font-family: var(--sans); font-size: 0.65rem; font-weight: 700;
     letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft);
     border: 1px solid var(--line); border-radius: 99px; padding: 0.05rem 0.5rem;
-    margin-top: 0.4rem;
   }
+  .path-tag.prevent { color: var(--sage); border-color: var(--sage); }
+  .path-tag.navigate { color: var(--slate); border-color: var(--slate); }
 
-  /* ---------- the card ---------- */
   .handoff-card {
     background: var(--card); border: 1px solid var(--line); border-radius: 14px;
     box-shadow: 0 10px 34px rgba(38, 37, 31, 0.09);
@@ -135,8 +134,15 @@
   }
   .step-body { font-size: 1.02rem; }
   .step-note { font-size: 0.85rem; color: var(--ink-soft); margin-top: 0.35rem; font-style: italic; }
+  .call-list { list-style: none; margin-top: 0.5rem; display: grid; gap: 0.5rem; }
+  .call-list li {
+    background: var(--paper-deep); border: 1px solid var(--line); border-radius: 8px;
+    padding: 0.55rem 0.8rem; font-size: 0.95rem;
+  }
+  .call-list .rname { font-family: var(--sans); font-weight: 700; }
+  .call-list .rreach { color: var(--ink-soft); font-size: 0.85rem; display: block; }
+  .call-list a { color: var(--slate); }
 
-  /* confirm gate */
   .step-confirm { background: var(--amber-wash); }
   .step-confirm .step-num { background: var(--amber); color: #fff; }
   .step-confirm .step-label { color: var(--amber); }
@@ -146,7 +152,6 @@
   }
   .confirm-check input { width: 1.1rem; height: 1.1rem; accent-color: var(--amber); margin-top: 0.15rem; cursor: pointer; }
 
-  /* human owner */
   .step-owner { background: var(--sage-wash); }
   .step-owner .step-num { background: var(--sage); color: #fff; }
   .step-owner .step-label { color: var(--sage); }
@@ -157,7 +162,6 @@
     padding: 0.2rem 0.7rem; margin-top: 0.45rem;
   }
 
-  /* summary */
   .summary-block { padding: 1.3rem 1.6rem 1.5rem; background: var(--paper-deep); border-top: 1px solid var(--line); }
   .summary-block h3 {
     font-family: var(--sans); font-size: 0.78rem; font-weight: 700;
@@ -179,6 +183,25 @@
   .gate-note { font-family: var(--sans); font-size: 0.82rem; color: var(--amber); font-weight: 600; }
   .gate-note.cleared { color: var(--sage); }
 
+  /* systems reference */
+  .systems { margin-top: 2.5rem; }
+  .systems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+  .system-box {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem;
+  }
+  .system-box h3 {
+    font-family: var(--sans); font-size: 0.9rem; font-weight: 800; margin-bottom: 0.5rem;
+  }
+  .system-box ul { list-style: none; display: grid; gap: 0.55rem; }
+  .system-box li { font-size: 0.88rem; }
+  .system-box .rname { font-family: var(--sans); font-weight: 700; }
+  .system-box .rwhat { color: var(--ink-soft); font-size: 0.82rem; display: block; }
+  .system-box a { color: var(--slate); }
+  .systems-note {
+    margin-top: 0.9rem; font-family: var(--sans); font-size: 0.82rem; font-weight: 600; color: var(--amber);
+    max-width: 78ch;
+  }
+
   footer.boundary {
     max-width: 1080px; margin: 0 auto; padding: 2rem 1.5rem 3rem;
     border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.9rem;
@@ -191,122 +214,196 @@
 <body>
 
 <div class="synthetic-banner">
-  <strong>Synthetic training demo.</strong> Every scenario is fictional. No real people, no real records. Capacity shown is <strong>not live</strong>.
+  <strong>Synthetic scenarios, real resources.</strong> Every family below is fictional. Every resource is real and was verified live on Aug 28, 2026, but hours, beds, and openings are <strong>not live</strong>. Call first.
 </div>
 
 <header class="masthead">
   <div class="kicker">Claude Impact Lab &middot; Birmingham &middot; Challenge 4</div>
-  <h1>Confirm-First Handoff Card</h1>
-  <p class="lede">One bounded moment: a frontline responder needs the next safe step for a person, right now. This card gives the step, the one thing to <em>confirm by phone before anyone travels</em>, who owns the handoff, and when to follow up. It feeds One Roof's Coordinated Entry. It never goes around it.</p>
+  <h1>Before the System: a Confirm-First Family Navigator</h1>
+  <p class="lede">For families of a person living with both a mental health condition and substance use. One bounded moment at a time, this card gives the calls to make first, the one thing to <em>confirm by phone before anyone travels</em>, who owns the next step, and when to check back. The goal is to catch your person before homelessness starts, and to hand you a clear map of the systems when it cannot be avoided.</p>
+  <p class="danger-line">If someone is in immediate danger, call 911 and say it is a mental health emergency. For crisis support right now, call or text 988.</p>
 </header>
 
 <main>
   <div class="layout">
     <section class="scenario-pane" aria-label="Scenario picker">
-      <h2>Pick a fictional situation</h2>
+      <h2>Pick the moment you are in</h2>
       <ul class="scenario-list" id="scenario-list"></ul>
     </section>
 
-    <section class="card-pane" aria-label="Handoff card" aria-live="polite">
-      <h2 class="card-pane-title">The handoff card</h2>
+    <section class="card-pane" aria-label="Family handoff card" aria-live="polite">
+      <h2 class="card-pane-title">The family card</h2>
       <div id="card-root" class="handoff-card">
-        <div class="empty-state">Select a situation on the left. Every one of them is synthetic.</div>
+        <div class="empty-state">Pick a moment on the left. Every family shown is fictional. The help shown is real.</div>
       </div>
     </section>
   </div>
+
+  <section class="systems" aria-label="The four systems">
+    <h2 class="systems-title">The four systems, one page</h2>
+    <div class="systems-grid" id="systems-grid"></div>
+    <p class="systems-note">Every resource above is real and its site was verified live on August 28, 2026. Nothing here is a live feed. Hours change, beds fill, rules shift. The confirm-first rule exists for exactly that reason: call before anyone travels.</p>
+  </section>
 </main>
 
 <footer class="boundary">
-  <p><span class="boundary-strong">Workflow boundary.</span> <a href="https://www.oneroofonline.org/" rel="noopener">One Roof</a> runs Coordinated Entry for the Birmingham area. This card routes people toward that system and marks where its trained staff take over. It does not screen, score, rank, or place anyone.</p>
-  <p><span class="boundary-strong">Why a person owns the handoff.</span> Referral navigation collapses without funded humans. On North Carolina's NCCARE360 platform, referral resolution ran 88 percent with funded navigators and 30 percent without them, on the same software. Evidence base: <a href="https://impact-birmingham.com" rel="noopener">impact-birmingham.com</a>.</p>
-  <p><span class="boundary-strong">Capacity is not live.</span> This tool holds no connection to any bed list or facility. That is why step 3 exists.</p>
-  <p><span class="boundary-strong">This project.</span> Source, demo steps, and the full limitations list: <a href="https://github.com/mhancock537/confirm-first-handoff" rel="noopener">github.com/mhancock537/confirm-first-handoff</a>. Served beside this page: <a href="README.md">README</a>, <a href="DEMO.md">demo walkthrough</a>, <a href="LIMITATIONS.md">limitations</a>, <a href="data/homelessness-handoff-scenarios.csv">the synthetic dataset</a>.</p>
+  <p><span class="boundary-strong">Workflow boundary.</span> <a href="https://www.oneroofonline.org/" rel="noopener">One Roof</a> runs Coordinated Entry for the Birmingham area. When homelessness cannot be prevented, that is the front door, and this card routes families toward it and never around it. This tool does not screen, score, rank, or place anyone, and it predicts nothing about any person.</p>
+  <p><span class="boundary-strong">Why a person owns every handoff.</span> Referral navigation collapses without funded humans. On North Carolina's NCCARE360 platform, referral resolution ran 88 percent with funded navigators and 30 percent without them, on the same software. Evidence base: <a href="https://impact-birmingham.com" rel="noopener">impact-birmingham.com</a>.</p>
+  <p><span class="boundary-strong">Your privacy.</span> This page has no forms and no storage. Nothing about your person is typed, saved, or sent anywhere. The summary you copy names a situation type, never a diagnosis and never a name.</p>
+  <p><span class="boundary-strong">This project.</span> Source, demo steps, and the full limitations list: <a href="https://github.com/mhancock537/confirm-first-handoff" rel="noopener">github.com/mhancock537/confirm-first-handoff</a>. Served beside this page: <a href="README.md">README</a>, <a href="DEMO.md">demo walkthrough</a>, <a href="LIMITATIONS.md">limitations</a>, <a href="data/family-scenarios.csv">the synthetic scenarios</a>, <a href="data/resources.csv">the verified resource list</a>.</p>
 </footer>
 
 <script>
-// Source of record: data/homelessness-handoff-scenarios.csv (synthetic, is_synthetic=true
-// on every row). Copied here by hand so the page opens from a file with no server.
-// If the two drift, the CSV wins. Logged in LIMITATIONS.md.
-const SCENARIOS = [
-  { scenario_id: "SCEN-01",
-    person_context: "Fictional adult sleeping outdoors during a heat advisory",
-    immediate_need: "Immediate shade and water",
-    public_resource_type: "cooling center",
-    information_to_confirm: "Whether the nearest listed cooling center is open today",
-    safe_next_step: "Direct to nearest listed cooling center and confirm by phone before travel",
-    handoff_owner_type: "frontline responder",
-    follow_up_window: "within 2 hours",
-    capacity_is_not_live: true, is_synthetic: true },
-  { scenario_id: "SCEN-02",
-    person_context: "Fictional adult with a pet seeking overnight shelter",
-    immediate_need: "Overnight shelter that accepts pets",
-    public_resource_type: "pet-friendly shelter bed",
-    information_to_confirm: "Whether pet-friendly beds are currently available",
-    safe_next_step: "Contact Fictional Coordinated Entry access point to confirm pet policy and availability",
-    handoff_owner_type: "coordinated entry access point",
-    follow_up_window: "within 4 hours",
-    capacity_is_not_live: true, is_synthetic: true },
-  { scenario_id: "SCEN-03",
-    person_context: "Fictional family with children needing emergency shelter",
-    immediate_need: "Emergency family shelter placement",
-    public_resource_type: "family shelter",
-    information_to_confirm: "Whether family shelter has an intake slot today",
-    safe_next_step: "Direct to Fictional Coordinated Entry family intake line for live confirmation",
-    handoff_owner_type: "coordinated entry access point",
-    follow_up_window: "same day",
-    capacity_is_not_live: true, is_synthetic: true },
-  { scenario_id: "SCEN-04",
-    person_context: "Fictional young adult aging out of foster care",
-    immediate_need: "Transitional housing information",
-    public_resource_type: "youth transitional housing",
-    information_to_confirm: "Age and eligibility documentation needed for youth programs",
-    safe_next_step: "Direct to Fictional youth-specific transitional housing program intake",
-    handoff_owner_type: "youth services provider",
-    follow_up_window: "within 3 days",
-    capacity_is_not_live: true, is_synthetic: true },
-  { scenario_id: "SCEN-05",
-    person_context: "Fictional adult recently discharged from a hospital",
-    immediate_need: "Short-term respite care bed",
-    public_resource_type: "medical respite",
-    information_to_confirm: "Whether a discharge referral form is required",
-    safe_next_step: "Direct to Fictional medical respite program and confirm referral requirement",
-    handoff_owner_type: "healthcare case manager",
-    follow_up_window: "within 24 hours",
-    capacity_is_not_live: true, is_synthetic: true },
-  { scenario_id: "SCEN-06",
-    person_context: "Fictional adult seeking daytime services and a phone charge",
-    immediate_need: "Daytime drop-in services",
-    public_resource_type: "daytime drop-in center",
-    information_to_confirm: "Current operating hours for the listed drop-in center",
-    safe_next_step: "Direct to nearest listed daytime drop-in center and confirm hours by phone",
-    handoff_owner_type: "frontline responder",
-    follow_up_window: "same day",
-    capacity_is_not_live: true, is_synthetic: true },
+// Sources of record: data/family-scenarios.csv (synthetic, is_synthetic=true on every
+// row) and data/resources.csv (real resources, sites verified live 2026-08-28). Copied
+// here by hand so the page opens from a file with no server. If they drift, the CSVs
+// win. tests/check-data.py guards this. Logged in LIMITATIONS.md.
+const RESOURCES = [
+  { resource_id: "RES-988", name: "988 Suicide and Crisis Lifeline", system: "crisis",
+    what_it_is: "24/7 crisis line that also takes calls from worried family members",
+    how_to_reach: "Call or text 988", url: "https://988lifeline.org", verified_live: "2026-08-28" },
+  { resource_id: "RES-CCB", name: "Crisis Center Birmingham", system: "crisis",
+    what_it_is: "Local 988 crisis center for the Birmingham area and home of the Recovery Resource Center",
+    how_to_reach: "Contact page on their site", url: "https://www.crisiscenterbham.org", verified_live: "2026-08-28" },
+  { resource_id: "RES-JBS", name: "JBS Mental Health Authority", system: "crisis",
+    what_it_is: "Community mental health authority for Jefferson Blount and St. Clair counties with a crisis center and a Jefferson County Probate Court program",
+    how_to_reach: "Contact page on their site", url: "https://jbsmentalhealth.com", verified_live: "2026-08-28" },
+  { resource_id: "RES-211", name: "211 Connects Alabama", system: "navigation",
+    what_it_is: "Free 24/7 statewide referral line for food housing health care and more",
+    how_to_reach: "Dial 2-1-1 or text your ZIP to 898-211", url: "https://www.211connectsalabama.org", verified_live: "2026-08-28" },
+  { resource_id: "RES-FT", name: "FindTreatment.gov", system: "treatment",
+    what_it_is: "Federal locator for licensed mental health and substance use treatment including programs for both together",
+    how_to_reach: "Search on the site", url: "https://findtreatment.gov", verified_live: "2026-08-28" },
+  { resource_id: "RES-ADMH", name: "Alabama Department of Mental Health", system: "treatment",
+    what_it_is: "State authority over public mental health and substance use services in Alabama",
+    how_to_reach: "Contact page on their site", url: "https://mh.alabama.gov", verified_live: "2026-08-28" },
+  { resource_id: "RES-1ROOF", name: "One Roof", system: "housing",
+    what_it_is: "Coordinated Entry lead for the greater Birmingham area and the front door to shelter and housing help",
+    how_to_reach: "Contact page on their site", url: "https://www.oneroofonline.org", verified_live: "2026-08-28" },
+  { resource_id: "RES-NAMI", name: "NAMI Alabama", system: "family",
+    what_it_is: "Family education and support groups for mental illness including support for families whose person refuses help",
+    how_to_reach: "Contact page on their site", url: "https://namialabama.org", verified_live: "2026-08-28" },
+  { resource_id: "RES-MCAID", name: "Alabama Medicaid", system: "benefits",
+    what_it_is: "State health coverage that pays for much of the treatment in this guide",
+    how_to_reach: "Apply and contact through the site", url: "https://medicaid.alabama.gov", verified_live: "2026-08-28" },
+  { resource_id: "RES-LSA", name: "Legal Services Alabama", system: "benefits",
+    what_it_is: "Free civil legal help including eviction defense and benefits appeals",
+    how_to_reach: "Intake through the site", url: "https://legalservicesalabama.org", verified_live: "2026-08-28" },
+  { resource_id: "RES-SSA", name: "Social Security disability", system: "benefits",
+    what_it_is: "SSI and SSDI income for people whose conditions keep them from working",
+    how_to_reach: "Apply through the site", url: "https://www.ssa.gov/disability", verified_live: "2026-08-28" },
 ];
+
+const SCENARIOS = [
+  { scenario_id: "FAM-01",
+    family_context: "Fictional parent whose adult child with co-occurring mental health and substance use needs is being discharged from an ER today with nowhere to go",
+    immediate_goal: "Stop a discharge to the street",
+    path: "prevent",
+    call_first_ids: "RES-988;RES-FT;RES-CCB",
+    information_to_confirm: "Whether discharge can wait until a written plan exists and whether a treatment or respite bed can take them today",
+    safe_next_step: "Ask the hospital for its discharge plan in writing and call 988 about same-day co-occurring options before anyone leaves the building",
+    if_entry_needed: "One Roof Coordinated Entry only if every treatment door is closed today",
+    handoff_owner: "hospital discharge planner or social worker",
+    takeover_point: "The moment a treatment intake accepts them the intake staff own the plan",
+    follow_up_window: "before discharge happens" },
+  { scenario_id: "FAM-02",
+    family_context: "Fictional family that has reached the point where their person cannot stay in the home tonight and everyone is exhausted",
+    immediate_goal: "Get through tonight without the street",
+    path: "prevent",
+    call_first_ids: "RES-988;RES-211",
+    information_to_confirm: "Whether mobile crisis or a crisis bed is available tonight and what 211 shows for tonight in your ZIP",
+    safe_next_step: "Call or text 988 before anyone packs a bag and say you are a family member in a co-occurring crisis",
+    if_entry_needed: "One Roof Coordinated Entry if no crisis option exists tonight",
+    handoff_owner: "crisis counselor on the 988 call",
+    takeover_point: "The counselor owns the next step from the moment they answer",
+    follow_up_window: "tonight before dark" },
+  { scenario_id: "FAM-03",
+    family_context: "Fictional family whose person left a detox program early and they are afraid the street comes next",
+    immediate_goal: "Get back into treatment before housing breaks",
+    path: "prevent",
+    call_first_ids: "RES-FT;RES-ADMH",
+    information_to_confirm: "Whether the program will readmit them and exactly what the intake requires this time",
+    safe_next_step: "Search FindTreatment.gov for co-occurring programs and call the top matches before driving anywhere",
+    if_entry_needed: "One Roof Coordinated Entry if readmission fails and home is no longer possible",
+    handoff_owner: "treatment intake staff",
+    takeover_point: "Intake staff take over at the first returned phone call",
+    follow_up_window: "within 24 hours" },
+  { scenario_id: "FAM-04",
+    family_context: "Fictional family holding an eviction notice while their person manages both a mental health condition and substance use",
+    immediate_goal: "Keep the housing so the system is never needed",
+    path: "navigate",
+    call_first_ids: "RES-LSA;RES-211;RES-MCAID",
+    information_to_confirm: "What documents legal aid needs and every date printed on the notice",
+    safe_next_step: "Start Legal Services Alabama intake and dial 2-1-1 about rent and utility help before the court date",
+    if_entry_needed: "One Roof Coordinated Entry if the housing is lost anyway",
+    handoff_owner: "legal aid intake worker",
+    takeover_point: "Legal aid owns the case once intake accepts it",
+    follow_up_window: "before the date on the notice" },
+  { scenario_id: "FAM-05",
+    family_context: "Fictional family whose person cycles between jail the ER and the street and nothing has stuck",
+    immediate_goal: "Get one accountable owner instead of another loop",
+    path: "navigate",
+    call_first_ids: "RES-JBS;RES-MCAID;RES-SSA",
+    information_to_confirm: "Whether your person is in JBS Mental Health Authority's service area and what its intake requires",
+    safe_next_step: "Call JBS intake and ask for one named case manager plus start Medicaid and disability paperwork the same week",
+    if_entry_needed: "One Roof Coordinated Entry whenever the street is where a loop ends",
+    handoff_owner: "JBS intake then an assigned case manager",
+    takeover_point: "A case manager owns the whole picture once assigned",
+    follow_up_window: "within this week" },
+  { scenario_id: "FAM-06",
+    family_context: "Fictional family whose person refuses all help and the family is running out of strength",
+    immediate_goal: "Keep the family strong enough to catch the next opening",
+    path: "navigate",
+    call_first_ids: "RES-NAMI;RES-988",
+    information_to_confirm: "When the next NAMI family support group meets near you and whether 988 counsels family callers in this situation",
+    safe_next_step: "Join a NAMI Alabama family group and call 988 yourself because family callers count",
+    if_entry_needed: "One Roof Coordinated Entry if your person lands on the street and asks for help",
+    handoff_owner: "the family with NAMI support behind them",
+    takeover_point: "No professional can take over until your person says yes so the handoff waits at the family until then",
+    follow_up_window: "ongoing and revisit weekly" },
+];
+
+const SYSTEM_LABELS = {
+  crisis: "Crisis and mental health",
+  treatment: "Substance use treatment",
+  housing: "Housing, one front door",
+  navigation: "Find anything, one number",
+  family: "Support for the family",
+  benefits: "Benefits and legal",
+};
 
 const listEl = document.getElementById("scenario-list");
 const cardRoot = document.getElementById("card-root");
 let activeId = null;
-let confirmed = {}; // per-scenario confirm state, reset on page load
+let confirmed = {};
 
 function esc(s) {
   return String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
 }
+function resById(id) { return RESOURCES.find(r => r.resource_id === id); }
 
 function summaryText(s, isConfirmed) {
+  const calls = s.call_first_ids.split(";").map(id => {
+    const r = resById(id);
+    return "  - " + r.name + " (" + r.how_to_reach + ")";
+  }).join("\n");
   return [
-    "HANDOFF SUMMARY  (SYNTHETIC TRAINING SCENARIO " + s.scenario_id + ")",
+    "FAMILY HANDOFF SUMMARY  (SYNTHETIC TRAINING SCENARIO " + s.scenario_id + ")",
     "",
-    "Situation: " + s.person_context,
-    "Immediate need: " + s.immediate_need,
-    "Resource type: " + s.public_resource_type + "  [capacity NOT LIVE]",
-    "Phone confirmation before travel: " + s.information_to_confirm,
-    "  Status: " + (isConfirmed ? "CONFIRMED by responder over the phone" : "NOT YET CONFIRMED"),
+    "The moment: " + s.family_context,
+    "Goal right now: " + s.immediate_goal,
+    "Call first, in order:",
+    calls,
+    "Confirm by phone before anyone travels: " + s.information_to_confirm,
+    "  Status: " + (isConfirmed ? "CONFIRMED by the family over the phone" : "NOT YET CONFIRMED"),
     "Safe next step: " + s.safe_next_step,
-    "Handoff owner: " + s.handoff_owner_type + "  (a trained person takes over here)",
-    "Follow-up window: " + s.follow_up_window,
+    "If the system cannot be avoided: " + s.if_entry_needed + "  [capacity NOT LIVE]",
+    "Who owns it now: " + s.handoff_owner,
+    "Where a trained person takes over: " + s.takeover_point,
+    "Check back: " + s.follow_up_window,
     "",
-    "Contains no real personal data. Feeds One Roof Coordinated Entry, never around it.",
+    "Contains no name, no diagnosis, no personal data. Resources verified live 2026-08-28,",
+    "hours and openings not live. Feeds One Roof Coordinated Entry, never around it.",
   ].join("\n");
 }
 
@@ -315,8 +412,11 @@ function renderList() {
     <li>
       <button class="scenario-btn" data-id="${s.scenario_id}" aria-pressed="${s.scenario_id === activeId}">
         <span class="sid">${esc(s.scenario_id)}</span>
-        <span class="sneed">${esc(s.immediate_need)}</span><br>
-        <span class="fictional-tag">Fictional</span>
+        <span class="sneed">${esc(s.immediate_goal)}</span>
+        <span class="tagrow">
+          <span class="fictional-tag">Fictional</span>
+          <span class="path-tag ${esc(s.path)}">${s.path === "prevent" ? "Prevent entry" : "Navigate the systems"}</span>
+        </span>
       </button>
     </li>`).join("");
 }
@@ -325,6 +425,11 @@ function renderCard() {
   const s = SCENARIOS.find(x => x.scenario_id === activeId);
   if (!s) return;
   const isConfirmed = !!confirmed[s.scenario_id];
+  const calls = s.call_first_ids.split(";").map(id => {
+    const r = resById(id);
+    return `<li><span class="rname">${esc(r.name)}</span>
+      <span class="rreach">${esc(r.how_to_reach)} &middot; <a href="${esc(r.url)}" rel="noopener">${esc(r.url).replace("https://","")}</a> &middot; site verified ${esc(r.verified_live)}</span></li>`;
+  }).join("");
   cardRoot.innerHTML = `
     <div class="card-head">
       <span class="sid">${esc(s.scenario_id)}</span>
@@ -337,18 +442,17 @@ function renderCard() {
     <div class="step">
       <div class="step-num">1</div>
       <div>
-        <div class="step-label">The situation, with dignity</div>
-        <div class="step-body">${esc(s.person_context)}. The immediate need is <strong>${esc(s.immediate_need).toLowerCase()}</strong>.</div>
-        <div class="step-note">The person is the user of this handoff, never the problem in it.</div>
+        <div class="step-label">The moment, with dignity</div>
+        <div class="step-body">${esc(s.family_context)}. The goal right now: <strong>${esc(s.immediate_goal).toLowerCase()}</strong>.</div>
+        <div class="step-note">Your person is a person. This card never asks who they are, and nothing you do here is recorded.</div>
       </div>
     </div>
 
     <div class="step">
       <div class="step-num">2</div>
       <div>
-        <div class="step-label">Safe next step</div>
-        <div class="step-body">${esc(s.safe_next_step)}.</div>
-        <div class="step-note">Resource type: ${esc(s.public_resource_type)} <span class="chip chip-notlive">capacity not live</span></div>
+        <div class="step-label">Call these first, in this order</div>
+        <ul class="call-list">${calls}</ul>
       </div>
     </div>
 
@@ -357,7 +461,7 @@ function renderCard() {
       <div>
         <div class="step-label">Confirm by phone before anyone travels</div>
         <div class="step-body">${esc(s.information_to_confirm)}.</div>
-        <div class="step-note">This tool cannot check availability. Nothing here is live. A person makes this call.</div>
+        <div class="step-note">This page cannot check any of that. Nothing here is live. A person makes this call, and today that person is you.</div>
         <label class="confirm-check">
           <input type="checkbox" id="confirm-box" ${isConfirmed ? "checked" : ""}>
           <span>I reached a person and confirmed the item above. (Demo checkbox. It records nothing and sends nothing.)</span>
@@ -365,26 +469,35 @@ function renderCard() {
       </div>
     </div>
 
-    <div class="step step-owner">
+    <div class="step">
       <div class="step-num">4</div>
       <div>
-        <div class="step-label">Who owns this handoff</div>
-        <div class="step-body">${esc(s.handoff_owner_type)}</div>
-        <span class="human-marker">A trained person takes over here</span>
-        <div class="step-note">Eligibility and placement decisions belong to this person, not to this card.</div>
+        <div class="step-label">Safe next step</div>
+        <div class="step-body">${esc(s.safe_next_step)}.</div>
+        <div class="step-note">If the system cannot be avoided: ${esc(s.if_entry_needed)} <span class="chip chip-notlive">capacity not live</span></div>
+      </div>
+    </div>
+
+    <div class="step step-owner">
+      <div class="step-num">5</div>
+      <div>
+        <div class="step-label">Who owns it now</div>
+        <div class="step-body">${esc(s.handoff_owner)}</div>
+        <span class="human-marker">Where a trained person takes over</span>
+        <div class="step-note">${esc(s.takeover_point)}.</div>
       </div>
     </div>
 
     <div class="step">
-      <div class="step-num">5</div>
+      <div class="step-num">6</div>
       <div>
-        <div class="step-label">Follow-up window</div>
-        <div class="step-body">Check back <strong>${esc(s.follow_up_window)}</strong>. The handoff is not done until the follow-up happens.</div>
+        <div class="step-label">Check back</div>
+        <div class="step-body">Follow up <strong>${esc(s.follow_up_window)}</strong>. The handoff is not done until the follow-up happens.</div>
       </div>
     </div>
 
     <div class="summary-block">
-      <h3>Handoff summary &middot; no sensitive personal data</h3>
+      <h3>Family handoff summary &middot; no name, no diagnosis, no personal data</h3>
       <pre class="summary" id="summary-pre">${esc(summaryText(s, isConfirmed))}</pre>
       <div class="summary-actions">
         <button class="copy-btn" id="copy-btn" ${isConfirmed ? "" : "disabled"}>Copy summary</button>
@@ -408,6 +521,18 @@ function renderCard() {
   });
 }
 
+function renderSystems() {
+  const order = ["crisis", "treatment", "housing", "navigation", "family", "benefits"];
+  document.getElementById("systems-grid").innerHTML = order.map(sys => {
+    const items = RESOURCES.filter(r => r.system === sys).map(r => `
+      <li><span class="rname">${esc(r.name)}</span>
+        <span class="rwhat">${esc(r.what_it_is)}.</span>
+        <span class="rwhat">${esc(r.how_to_reach)} &middot; <a href="${esc(r.url)}" rel="noopener">${esc(r.url).replace("https://","")}</a></span>
+      </li>`).join("");
+    return `<div class="system-box"><h3>${esc(SYSTEM_LABELS[sys])}</h3><ul>${items}</ul></div>`;
+  }).join("");
+}
+
 listEl.addEventListener("click", e => {
   const btn = e.target.closest(".scenario-btn");
   if (!btn) return;
@@ -417,6 +542,7 @@ listEl.addEventListener("click", e => {
 });
 
 renderList();
+renderSystems();
 </script>
 </body>
 </html>

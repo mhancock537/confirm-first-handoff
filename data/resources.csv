@@ -1,0 +1,12 @@
+resource_id,name,system,what_it_is,how_to_reach,url,verified_live,is_real
+RES-988,988 Suicide and Crisis Lifeline,crisis,24/7 crisis line that also takes calls from worried family members,Call or text 988,https://988lifeline.org,2026-08-28,true
+RES-CCB,Crisis Center Birmingham,crisis,Local 988 crisis center for the Birmingham area and home of the Recovery Resource Center,Contact page on their site,https://www.crisiscenterbham.org,2026-08-28,true
+RES-JBS,JBS Mental Health Authority,crisis,Community mental health authority for Jefferson Blount and St. Clair counties with a crisis center and a Jefferson County Probate Court program,Contact page on their site,https://jbsmentalhealth.com,2026-08-28,true
+RES-211,211 Connects Alabama,navigation,Free 24/7 statewide referral line for food housing health care and more,Dial 2-1-1 or text your ZIP to 898-211,https://www.211connectsalabama.org,2026-08-28,true
+RES-FT,FindTreatment.gov,treatment,Federal locator for licensed mental health and substance use treatment including programs for both together,Search on the site,https://findtreatment.gov,2026-08-28,true
+RES-ADMH,Alabama Department of Mental Health,treatment,State authority over public mental health and substance use services in Alabama,Contact page on their site,https://mh.alabama.gov,2026-08-28,true
+RES-1ROOF,One Roof,housing,Coordinated Entry lead for the greater Birmingham area and the front door to shelter and housing help,Contact page on their site,https://www.oneroofonline.org,2026-08-28,true
+RES-NAMI,NAMI Alabama,family,Family education and support groups for mental illness including support for families whose person refuses help,Contact page on their site,https://namialabama.org,2026-08-28,true
+RES-MCAID,Alabama Medicaid,benefits,State health coverage that pays for much of the treatment in this guide,Apply and contact through the site,https://medicaid.alabama.gov,2026-08-28,true
+RES-LSA,Legal Services Alabama,benefits,Free civil legal help including eviction defense and benefits appeals,Intake through the site,https://legalservicesalabama.org,2026-08-28,true
+RES-SSA,Social Security disability,benefits,SSI and SSDI income for people whose conditions keep them from working,Apply through the site,https://www.ssa.gov/disability,2026-08-28,true

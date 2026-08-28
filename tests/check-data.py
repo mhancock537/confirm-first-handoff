@@ -1,24 +1,38 @@
 #!/usr/bin/env python3
-"""Drift guard: every field value in the CSV must appear verbatim in index.html."""
+"""Drift guard: every field value in the CSVs must appear verbatim in index.html."""
 import csv, pathlib, sys
 
 root = pathlib.Path(__file__).resolve().parent.parent
 html = (root / "index.html").read_text()
 missing = []
+
+def check(csv_name, id_col, skip_cols, synthetic_col=None):
+    with open(root / "data" / csv_name) as f:
+        for row in csv.DictReader(f):
+            if synthetic_col and row[synthetic_col] != "true":
+                missing.append(f'{csv_name} {row[id_col]}: {synthetic_col} is not true')
+            for key, val in row.items():
+                if key in skip_cols:
+                    continue
+                if val not in html:
+                    missing.append(f'{csv_name} {row[id_col]}.{key}: "{val}" not found in index.html')
+
+check("family-scenarios.csv", "scenario_id",
+      {"capacity_is_not_live", "is_synthetic", "path"}, synthetic_col="is_synthetic")
+check("resources.csv", "resource_id", {"is_real"})
+
+# The event dataset no longer feeds the page but stays as provenance, intact.
 with open(root / "data" / "homelessness-handoff-scenarios.csv") as f:
-    for row in csv.DictReader(f):
-        if row["is_synthetic"] != "true":
-            missing.append(f'{row["scenario_id"]}: is_synthetic is not true')
-        for key, val in row.items():
-            if key in ("capacity_is_not_live", "is_synthetic"):
-                continue
-            if val not in html:
-                missing.append(f'{row["scenario_id"]}.{key}: "{val}" not found in index.html')
-for label in ("Synthetic", "not live", "NOT LIVE"):
+    rows = list(csv.DictReader(f))
+    if len(rows) != 6 or any(r["is_synthetic"] != "true" for r in rows):
+        missing.append("event dataset homelessness-handoff-scenarios.csv altered")
+
+for label in ("Synthetic", "not live", "NOT LIVE", "no diagnosis", "verified live"):
     if label not in html:
         missing.append(f'required label missing from index.html: "{label}"')
+
 if missing:
     print("DRIFT FOUND:")
     print("\n".join(missing))
     sys.exit(1)
-print("OK: CSV and index.html agree, synthetic and not-live labels present.")
+print("OK: CSVs and index.html agree, synthetic, not-live, and no-diagnosis labels present.")
